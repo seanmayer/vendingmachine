@@ -13,8 +13,12 @@ import pojo.InventoryItem;
  */
 public class InventoryHandler {
     
-    ArrayList<InventoryItem> inventoryList = new ArrayList<>();
+    private ArrayList<InventoryItem> inventoryList;
 
+    public InventoryHandler() {
+        inventoryList = new ArrayList<>();
+    }
+    
     public ArrayList<InventoryItem> getInventoryList() {
         return inventoryList;
     }
@@ -22,5 +26,24 @@ public class InventoryHandler {
     public void setInventoryList(ArrayList<InventoryItem> inventoryList) {
         this.inventoryList = inventoryList;
     }
+    
+    public boolean findInventoryItem(String search) {
+        for (int i = 0; i < inventoryList.size(); i++) {
+            if(search.equalsIgnoreCase(inventoryList.get(i).getName())) {
+                return true;
+            }
+          }
+        return false;
+    }
+    
+    public float getInventoryItemPrice(String search) {
+    for (int i = 0; i < inventoryList.size(); i++) {
+        if(search.equalsIgnoreCase(inventoryList.get(i).getName())) {
+            return inventoryList.get(i).getPrice();
+        }
+      }
+    return 0;
+    }
+    
     
 }

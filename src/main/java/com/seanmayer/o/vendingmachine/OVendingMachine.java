@@ -5,9 +5,19 @@
 
 package com.seanmayer.o.vendingmachine;
 
+import controller.ChangeHandler;
+import controller.InventoryHandler;
+import simulator.SimulateInventory;
+import formatter.MoneyFormatter;
+import java.util.Scanner;
+import pojo.InventoryItem;
+import simulator.SimulateChange;
 import statepattern.Context;
-import statepattern.StartState;
-import statepattern.StopState;
+import statepattern.InputChangeState;
+import statepattern.InventoryState;
+import statepattern.SelectItemState;
+import statepattern.VendingState;
+
 
 /**
  *
@@ -20,24 +30,32 @@ import statepattern.StopState;
  */
 public class OVendingMachine {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {    
+        
+        SimulateInventory simulateInventory = new SimulateInventory();
+        SimulateChange simulateVendingMachineChange = new SimulateChange();
+        
+        InventoryHandler inventoryHandler = simulateInventory.simulateInventory();
+        ChangeHandler changeHandler = simulateVendingMachineChange.simulateChange();
+        
+        System.out.println(changeHandler.getVendingMachineCoinList());
+        
+        //Context context = new Context();
+
+        //InventoryState inventoryState = new InventoryState(inventoryHandler);
+        //inventoryState.doAction(context);
+        
+        //SelectItemState selectItemState = new SelectItemState();
+        //selectItemState.doAction(context);
+        
+        //System.out.println(inventoryHandler.findInventoryItem(selectItemState.itemSelected));
+        //System.out.println(inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected));
+        
+        //InputChangeState inputChangeState = new InputChangeState();
+        //inputChangeState.doAction(context);
         
         
-        
-        Context context = new Context();
-        
-        StartState startState = new StartState();
-        startState.doAction(context);
-        
-        System.out.println(context.getState().toString());
-        
-        StopState stopState = new StopState();
-        stopState.doAction(context);
-        
-        System.out.println(context.getState().toString());
-        
-        
-         
-        //System.out.println("Hello World!");
+
+
     }
 }

@@ -4,19 +4,20 @@
  */
 package statepattern;
 
+import java.util.Scanner;
+
 /**
  *
  * @author sean
  */
-public class StopState implements VendingState {
-    @Override
-    public void doAction(Context context) {
-        System.out.println("Player is in stop state");
-        context.setState(this);
-    }
+public class SelectItemState implements VendingState{
+    
+    public String itemSelected;
     
     @Override
-    public String toString() {
-        return "Stop State";
-    }    
+    public void doAction(Context context) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Select item state: ");
+        this.itemSelected = input.nextLine(); 
+    }
 }
