@@ -8,14 +8,14 @@ package constants;
  * @author sean
  */
 public class ChangeConstants {
-    public static final int ONE_PENNY = 1;
-    public static final int TWO_PENCE = 2;
-    public static final int FIVE_PENCE = 5;
-    public static final int TEN_PENCE = 10;
-    public static final int TWENTY_PENCE = 20;
-    public static final int FIFTY_PENCE = 50;
-    public static final int ONE_POUND = 100;
-    public static final int TWO_POUNDS = 200;
+    public final int ONE_PENNY = 1;
+    public final int TWO_PENCE = 2;
+    public final int FIVE_PENCE = 5;
+    public final int TEN_PENCE = 10;
+    public final int TWENTY_PENCE = 20;
+    public final int FIFTY_PENCE = 50;
+    public final int ONE_POUND = 100;
+    public final int TWO_POUNDS = 200;
     
     @Override
     public String toString() {

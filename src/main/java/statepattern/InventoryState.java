@@ -30,10 +30,9 @@ public class InventoryState implements VendingState {
         }
         context.setState(this);
     }
-    
+
     @Override
-    public String toString() {
-        return "Start State";
+    public void print() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

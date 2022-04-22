@@ -21,6 +21,8 @@ public class ChangeHandler {
         this.totalChangeReceived = 0;
         this.totalVendingMachineChange = 0;
     }
+    
+
 
     public ArrayList<Change> getVendingMachineCoinList() {
         return vendingMachineCoinList;

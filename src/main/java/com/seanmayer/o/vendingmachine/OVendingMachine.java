@@ -30,17 +30,51 @@ import statepattern.VendingState;
  */
 public class OVendingMachine {
 
-    public static void main(String[] args) {    
+    public static void main(String[] args) {
+    
+    //Simulate Vending Machine
+    InventoryHandler inventoryHandler = new SimulateInventory().simulateInventory();
+    ChangeHandler changeHandler = new SimulateChange().simulateChange();
+    
+    Context context = new Context();
+    
+    //View products
+    InventoryState inventoryState = new InventoryState(inventoryHandler);
+    inventoryState.doAction(context);
+    
+    //Select product
+    SelectItemState selectItemState = new SelectItemState();
+    selectItemState.doAction(context);
+    
+    //Find product
+    inventoryHandler.findInventoryItem(selectItemState.itemSelected);
+    
+    //purchase price?
+    inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
+    
+    //Insert change
+    InputChangeState inputChangeState = new InputChangeState();
+    inputChangeState.doAction(context);
+    
+    //do you have the correct amount?
+    
+        //if yes
+            //continue
+        //if no
+            // give back change
+    
+    //does the machine have enough to give your money back?
+        //if yes
+            //receive change
+            //receive product
+        //if no
+            //give back change
+    
+    //receive product
+
+    
         
-        SimulateInventory simulateInventory = new SimulateInventory();
-        SimulateChange simulateVendingMachineChange = new SimulateChange();
-        
-        InventoryHandler inventoryHandler = simulateInventory.simulateInventory();
-        ChangeHandler changeHandler = simulateVendingMachineChange.simulateChange();
-        
-        System.out.println(changeHandler.getVendingMachineCoinList());
-        
-        //Context context = new Context();
+        //
 
         //InventoryState inventoryState = new InventoryState(inventoryHandler);
         //inventoryState.doAction(context);
