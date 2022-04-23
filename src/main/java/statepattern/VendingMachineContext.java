@@ -8,18 +8,18 @@ package statepattern;
  *
  * @author sean
  */
-public class Context {
-    private VendingState state;
+public class VendingMachineContext {
+    private VendingMachineState state;
     
-    public Context() {
+    public VendingMachineContext() {
         state = null;
     }
     
-    public void setState(VendingState state) {
+    public void setState(VendingMachineState state) {
         this.state = state;
     }
     
-    public VendingState getState() {
+    public VendingMachineState getState() {
         return state;
     }
 }

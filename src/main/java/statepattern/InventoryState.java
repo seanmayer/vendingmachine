@@ -12,7 +12,7 @@ import pojo.InventoryItem;
  *
  * @author sean
  */
-public class InventoryState implements VendingState {
+public class InventoryState implements VendingMachineState {
 
     private InventoryHandler inventoryHandler;   
     private MoneyFormatter moneyFormatter = new MoneyFormatter("en", "GB");
@@ -22,7 +22,7 @@ public class InventoryState implements VendingState {
     }
     
     @Override
-    public void doAction(Context context) {
+    public void doAction(VendingMachineContext context) {
         System.out.println("========= Vending Machine ========");
         for (InventoryItem i : inventoryHandler.getInventoryList()) {
             System.out.println("==================================");

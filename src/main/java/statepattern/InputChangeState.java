@@ -11,13 +11,22 @@ import java.util.Scanner;
  *
  * @author sean
  */
-public class InputChangeState implements VendingState {
+public class InputChangeState implements VendingMachineState {
     
-    private String selectedCoin = "";
-    private ChangeConstants changeConstants = new ChangeConstants();
+    Scanner input = new Scanner(System.in); 
+    private String optionValue = "";
+    
 
+    public String getOptionValue() {
+        return optionValue;
+    }
+
+    public void setOptionValue(String optionValue) {
+        this.optionValue = optionValue;
+    }    
+    
     public int getInputValue() {
-        return inputValue(Integer.parseInt(selectedCoin));
+        return inputValue(Integer.parseInt(optionValue));
     }
     
     private int inputValue(int index) {    
@@ -37,19 +46,17 @@ public class InputChangeState implements VendingState {
     }
     
     @Override
-    public void doAction(Context context) {
-        Scanner input = new Scanner(System.in);
-        while(!selectedCoin.equalsIgnoreCase("9")) {
-            System.out.println(new ChangeConstants().toString());
-            System.out.println(" Enter: 9 -> Exit");
-            System.out.println("Enter change: (1 - 9)");
-            selectedCoin = input.nextLine();
-        }
+    public void doAction(VendingMachineContext context) {
+        print(); 
+        optionValue = input.nextLine(); 
+        setOptionValue(optionValue);
     }
 
     @Override
     public void print() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println(new ChangeConstants().toString());
+        System.out.println(" Enter: 9 -> Continue");
+        System.out.println("Enter change: (1 - 9)");
     }
     
 }

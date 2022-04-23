@@ -10,14 +10,18 @@ import java.util.Scanner;
  *
  * @author sean
  */
-public class SelectItemState implements VendingState{
+public class SelectItemState implements VendingMachineState{
     
     public String itemSelected;
     
     @Override
-    public void doAction(Context context) {
-        Scanner input = new Scanner(System.in);
+    public void doAction(VendingMachineContext context) {
+        print();
+        this.itemSelected = new Scanner(System.in).nextLine(); 
+    }
+
+    @Override
+    public void print() {
         System.out.println("Select item state: ");
-        this.itemSelected = input.nextLine(); 
     }
 }

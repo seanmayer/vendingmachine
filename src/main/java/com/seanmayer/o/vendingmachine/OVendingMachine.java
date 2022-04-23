@@ -12,11 +12,11 @@ import formatter.MoneyFormatter;
 import java.util.Scanner;
 import pojo.InventoryItem;
 import simulator.SimulateChange;
-import statepattern.Context;
+import statepattern.VendingMachineContext;
 import statepattern.InputChangeState;
 import statepattern.InventoryState;
 import statepattern.SelectItemState;
-import statepattern.VendingState;
+import statepattern.VendingMachineState;
 
 
 /**
@@ -36,7 +36,7 @@ public class OVendingMachine {
     InventoryHandler inventoryHandler = new SimulateInventory().simulateInventory();
     ChangeHandler changeHandler = new SimulateChange().simulateChange();
     
-    Context context = new Context();
+    VendingMachineContext context = new VendingMachineContext();
     
     //View products
     InventoryState inventoryState = new InventoryState(inventoryHandler);
@@ -47,14 +47,27 @@ public class OVendingMachine {
     selectItemState.doAction(context);
     
     //Find product
-    inventoryHandler.findInventoryItem(selectItemState.itemSelected);
+    System.out.println("Finding Item...");
+    boolean itemFound = inventoryHandler.findInventoryItem(selectItemState.itemSelected);
+        
+    String option = "";
+    if(itemFound) {
+        while(!option.equalsIgnoreCase("9")) {
+            //purchase price?
+            float itemPrice = inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
+            System.out.println("Price of item: " + itemPrice);
+
+            //Insert change
+            InputChangeState inputChangeState = new InputChangeState();
+            inputChangeState.doAction(context);
+            option = inputChangeState.getOptionValue();
+            int inputChangeValue = inputChangeState.getInputValue();
+            
+            System.out.println("Option value: " + option);
+            System.out.println("Inputted change value: " + inputChangeValue);
+        }
+    }
     
-    //purchase price?
-    inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
-    
-    //Insert change
-    InputChangeState inputChangeState = new InputChangeState();
-    inputChangeState.doAction(context);
     
     //do you have the correct amount?
     
