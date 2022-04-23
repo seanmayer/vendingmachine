@@ -42,7 +42,7 @@ public class SimulateChange {
                 (float)changeConstants.ONE_POUND));
         changeList.add(new Change("TWO_POUNDS",
                 (float)changeConstants.TWO_POUNDS));
-        changeList.add(new Change("TWO_POIUNS",
+        changeList.add(new Change("TWO_POUNDS",
                 (float)changeConstants.TWO_POUNDS));
         changeList.add(new Change("TWO_POUNDS",
                 (float)changeConstants.TWO_POUNDS));

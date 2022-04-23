@@ -5,6 +5,8 @@
 
 package com.seanmayer.o.vendingmachine;
 
+import controllers.ChangeHandler;
+import simulator.SimulateChange;
 import views.ConsoleView;
 /**
  *
@@ -19,5 +21,6 @@ public class OVendingMachine {
     
     public static void main(String[] args) {
         new ConsoleView().runApp();
+       
     }
 }

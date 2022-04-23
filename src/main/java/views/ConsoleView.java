@@ -112,7 +112,10 @@ public class ConsoleView {
 
             //Check if user has inputted enough money and does vending machine have enough to give back?
             if(subtractPriceInput >= 0 && totalValueOwed <= vendingMachineCoinsTotal) {            
-                    System.out.println("Total change returned: " + moneyFormatter.getCurrency(totalValueOwed));            
+                    System.out.println("Total change returned: " + moneyFormatter.getCurrency(totalValueOwed)); 
+                    changeHandler.calculateChangeToGive((float)totalValueOwed);
+                    //changeHandler.getChangeListToRemove();
+                    
             } else {
                 System.out.println("Insufficient funds...");
                 System.out.println("Return inputted amount: " + moneyFormatter.getCurrency((float)totalChangeInput));

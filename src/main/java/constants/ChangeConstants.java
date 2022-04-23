@@ -12,7 +12,6 @@ import formatters.MoneyFormatter;
  */
 public class ChangeConstants {
     
-    private MoneyFormatter moneyFormatter;
     public final double ONE_PENNY = 0.01;
     public final double TWO_PENCE = 0.02;
     public final double FIVE_PENCE = 0.05;
@@ -23,11 +22,12 @@ public class ChangeConstants {
     public final double TWO_POUNDS = 2.00;
 
     public ChangeConstants() {
-        moneyFormatter = new MoneyFormatter("en", "GB");
+        
     }
     
     @Override
     public String toString() {
+        MoneyFormatter moneyFormatter = new MoneyFormatter("en", "GB");
         return """
                 Acceptable Coins:
                 Enter: 1 -> One penny:  """ + moneyFormatter.getCurrency((float)ONE_PENNY)+ "\n" +

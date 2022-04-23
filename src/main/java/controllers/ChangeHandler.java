@@ -4,6 +4,11 @@
  */
 package controllers;
 
+import changemakingproblem.MakeChange;
+import constants.ChangeConstants;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 import pojos.Change;
 
@@ -41,6 +46,38 @@ public class ChangeHandler {
         vendingMachineCoinList.add(new Change(type, change));
         pendingVendingMachineCoinList.add(new Change(type, change));
     }
+    
+    public void removeChange(float value) {
+        for(Change c : vendingMachineCoinList) {
+           if(value == c.getValue()) {
+            vendingMachineCoinList.remove(c); 
+           }
+        }
+    }
+    
+    public boolean calculateChangeToGive(float inputValue) {
+        inputValue = new BigDecimal(inputValue, MathContext.DECIMAL32).floatValue() + (float)0.001;
+        MakeChange makeChange = new MakeChange(vendingMachineCoinList);
+        makeChange.copyChangeList();
+        boolean enoughChange = makeChange.createChangeListToRemove(inputValue);
+        
+        for(Float f : makeChange.getChangeListToRemove()) {
+            System.out.println(f);
+        }
+        
+        return enoughChange;
+        
+    }
+    
+    public void getChangeListToRemove() {
+        
+    }
+    
+    
+    
+
+    
+
 
     public ArrayList<Change> getPendingVendingMachineCoinList() {
         return pendingVendingMachineCoinList;
