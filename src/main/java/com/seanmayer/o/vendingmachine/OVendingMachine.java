@@ -59,34 +59,49 @@ public class OVendingMachine {
         
         float totalChangeInput = 0;
         float subtractPriceInput = 0;
+        float totalValueOwed = 0;
         
         while(!option.equalsIgnoreCase("9")) {
             
-            //purchase price?
+            //Purchase price?
             float itemPrice = inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
             
             //Insert change
             System.out.println("<----------------------");
             InputChangeState inputChangeState = new InputChangeState();
             inputChangeState.doAction(context); 
+            option = inputChangeState.getOptionValue();
+            
+            //Input Change Value
+            double inputChangeValue = inputChangeState.getInputValue();
             
             System.out.println("---------------------->");
-            option = inputChangeState.getOptionValue();
-            double inputChangeValue = inputChangeState.getInputValue();
-            System.out.println("---------------------->");
-            System.out.println("Option value: " + option);
-            System.out.println("---------------------->");
-            System.out.println("Price of item: " + moneyFormatter.getCurrency(itemPrice));
-            System.out.println("Inputted change value: " + moneyFormatter.getCurrency((float)inputChangeValue));
+            
+            System.out.println("Price of item: " 
+                    + moneyFormatter.getCurrency(itemPrice));
+            
+            System.out.println("Inputted change value: " 
+                    + moneyFormatter.getCurrency((float)inputChangeValue));
             
             totalChangeInput += inputChangeValue;
-            System.out.println("Total change inputted: " + moneyFormatter.getCurrency((float)totalChangeInput));
+            
+            System.out.println("Total change inputted: " 
+                    + moneyFormatter.getCurrency((float)totalChangeInput));
             
             subtractPriceInput = (float)totalChangeInput - itemPrice;
-            float totalValueOwed = (subtractPriceInput > 0 ? subtractPriceInput:0);
+            totalValueOwed = (subtractPriceInput > 0 ? subtractPriceInput:0);
 
-            System.out.println("Total change owed: " + moneyFormatter.getCurrency(totalValueOwed));
+            System.out.println("Total change owed: " 
+                    + moneyFormatter.getCurrency(totalValueOwed));
             
+        }
+        
+        if(subtractPriceInput >= 0) {
+            System.out.println("Total change returned: " 
+                    + moneyFormatter.getCurrency(totalValueOwed));
+        } else {
+            System.out.println("Insufficient funds...");
+            System.out.println("Return inputted amount: " + moneyFormatter.getCurrency((float)totalChangeInput));
         }
     }
     
