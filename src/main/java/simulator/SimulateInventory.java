@@ -4,11 +4,11 @@
  */
 package simulator;
 
-import controller.ChangeHandler;
-import controller.InventoryHandler;
+import controllers.ChangeHandler;
+import controllers.InventoryHandler;
 import java.util.ArrayList;
-import pojo.Change;
-import pojo.InventoryItem;
+import pojos.Change;
+import pojos.InventoryItem;
 
 /**
  *

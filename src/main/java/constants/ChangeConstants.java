@@ -4,7 +4,7 @@
  */
 package constants;
 
-import formatter.MoneyFormatter;
+import formatters.MoneyFormatter;
 
 /**
  *

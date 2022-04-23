@@ -22,6 +22,6 @@ public class SelectItemState implements VendingMachineState{
 
     @Override
     public void print() {
-        System.out.println("Select item state: ");
+        System.out.println("Select vending machine item: ");
     }
 }

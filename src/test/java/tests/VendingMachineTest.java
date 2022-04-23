@@ -4,12 +4,12 @@
  */
 package tests;
 
-import controller.InventoryHandler;
+import controllers.InventoryHandler;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import pojo.InventoryItem;
+import pojos.InventoryItem;
 /**
  *
  * @author sean

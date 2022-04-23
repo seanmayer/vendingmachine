@@ -4,9 +4,9 @@
  */
 package statepattern;
 
-import controller.InventoryHandler;
-import formatter.MoneyFormatter;
-import pojo.InventoryItem;
+import controllers.InventoryHandler;
+import formatters.MoneyFormatter;
+import pojos.InventoryItem;
 
 /**
  *

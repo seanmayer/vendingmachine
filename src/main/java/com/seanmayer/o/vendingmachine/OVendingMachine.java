@@ -5,20 +5,7 @@
 
 package com.seanmayer.o.vendingmachine;
 
-import controller.ChangeHandler;
-import controller.InventoryHandler;
-import simulator.SimulateInventory;
-import formatter.MoneyFormatter;
-import java.util.Scanner;
-import pojo.InventoryItem;
-import simulator.SimulateChange;
-import statepattern.VendingMachineContext;
-import statepattern.InputChangeState;
-import statepattern.InventoryState;
-import statepattern.SelectItemState;
-import statepattern.VendingMachineState;
-
-
+import views.ConsoleView;
 /**
  *
  * @author sean
@@ -30,116 +17,7 @@ import statepattern.VendingMachineState;
  */
 public class OVendingMachine {
     
-    
-    
     public static void main(String[] args) {
-    
-    MoneyFormatter moneyFormatter = new MoneyFormatter("en", "GB");    
-        
-    //Simulate Vending Machine
-    InventoryHandler inventoryHandler = new SimulateInventory().simulateInventory();
-    ChangeHandler changeHandler = new SimulateChange().simulateChange();
-    
-    VendingMachineContext context = new VendingMachineContext();
-    
-    //View products
-    InventoryState inventoryState = new InventoryState(inventoryHandler);
-    inventoryState.doAction(context);
-    
-    //Select product
-    SelectItemState selectItemState = new SelectItemState();
-    selectItemState.doAction(context);
-    
-    //Find product
-    System.out.println("Finding Item...");
-    boolean itemFound = inventoryHandler.findInventoryItem(selectItemState.itemSelected);
-        
-    String option = "";
-    if(itemFound) {
-        
-        float totalChangeInput = 0;
-        float subtractPriceInput = 0;
-        float totalValueOwed = 0;
-        
-        while(!option.equalsIgnoreCase("9")) {
-            
-            //Purchase price?
-            float itemPrice = inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
-            
-            //Insert change
-            System.out.println("<----------------------");
-            InputChangeState inputChangeState = new InputChangeState();
-            inputChangeState.doAction(context); 
-            option = inputChangeState.getOptionValue();
-            
-            //Input Change Value
-            double inputChangeValue = inputChangeState.getInputValue();
-            
-            System.out.println("---------------------->");
-            
-            System.out.println("Price of item: " 
-                    + moneyFormatter.getCurrency(itemPrice));
-            
-            System.out.println("Inputted change value: " 
-                    + moneyFormatter.getCurrency((float)inputChangeValue));
-            
-            totalChangeInput += inputChangeValue;
-            
-            System.out.println("Total change inputted: " 
-                    + moneyFormatter.getCurrency((float)totalChangeInput));
-            
-            subtractPriceInput = (float)totalChangeInput - itemPrice;
-            totalValueOwed = (subtractPriceInput > 0 ? subtractPriceInput:0);
-
-            System.out.println("Total change owed: " 
-                    + moneyFormatter.getCurrency(totalValueOwed));
-            
-        }
-        
-        if(subtractPriceInput >= 0) {
-            System.out.println("Total change returned: " 
-                    + moneyFormatter.getCurrency(totalValueOwed));
-        } else {
-            System.out.println("Insufficient funds...");
-            System.out.println("Return inputted amount: " + moneyFormatter.getCurrency((float)totalChangeInput));
-        }
-    }
-    
-    
-    //do you have the correct amount?
-    
-        //if yes
-            //continue
-        //if no
-            // give back change
-    
-    //does the machine have enough to give your money back?
-        //if yes
-            //receive change
-            //receive product
-        //if no
-            //give back change
-    
-    //receive product
-
-    
-        
-        //
-
-        //InventoryState inventoryState = new InventoryState(inventoryHandler);
-        //inventoryState.doAction(context);
-        
-        //SelectItemState selectItemState = new SelectItemState();
-        //selectItemState.doAction(context);
-        
-        //System.out.println(inventoryHandler.findInventoryItem(selectItemState.itemSelected));
-        //System.out.println(inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected));
-        
-        //InputChangeState inputChangeState = new InputChangeState();
-        //inputChangeState.doAction(context);
-        
-        
-
-
+        new ConsoleView().runApp();
     }
 }
