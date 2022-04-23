@@ -15,10 +15,11 @@ import pojo.InventoryItem;
 public class InventoryState implements VendingMachineState {
 
     private InventoryHandler inventoryHandler;   
-    private MoneyFormatter moneyFormatter = new MoneyFormatter("en", "GB");
+    private MoneyFormatter moneyFormatter;
     
     public InventoryState(InventoryHandler inventoryHandler) {
         this.inventoryHandler = inventoryHandler;
+        this.moneyFormatter = new MoneyFormatter("en", "GB");
     }
     
     @Override

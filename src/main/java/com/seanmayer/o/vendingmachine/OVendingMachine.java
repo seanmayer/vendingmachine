@@ -29,9 +29,13 @@ import statepattern.VendingMachineState;
  * Item selected
  */
 public class OVendingMachine {
-
+    
+    
+    
     public static void main(String[] args) {
     
+    MoneyFormatter moneyFormatter = new MoneyFormatter("en", "GB");    
+        
     //Simulate Vending Machine
     InventoryHandler inventoryHandler = new SimulateInventory().simulateInventory();
     ChangeHandler changeHandler = new SimulateChange().simulateChange();
@@ -52,19 +56,37 @@ public class OVendingMachine {
         
     String option = "";
     if(itemFound) {
+        
+        float totalChangeInput = 0;
+        float subtractPriceInput = 0;
+        
         while(!option.equalsIgnoreCase("9")) {
+            
             //purchase price?
             float itemPrice = inventoryHandler.getInventoryItemPrice(selectItemState.itemSelected);
-            System.out.println("Price of item: " + itemPrice);
-
-            //Insert change
-            InputChangeState inputChangeState = new InputChangeState();
-            inputChangeState.doAction(context);
-            option = inputChangeState.getOptionValue();
-            int inputChangeValue = inputChangeState.getInputValue();
             
+            //Insert change
+            System.out.println("<----------------------");
+            InputChangeState inputChangeState = new InputChangeState();
+            inputChangeState.doAction(context); 
+            
+            System.out.println("---------------------->");
+            option = inputChangeState.getOptionValue();
+            double inputChangeValue = inputChangeState.getInputValue();
+            System.out.println("---------------------->");
             System.out.println("Option value: " + option);
-            System.out.println("Inputted change value: " + inputChangeValue);
+            System.out.println("---------------------->");
+            System.out.println("Price of item: " + moneyFormatter.getCurrency(itemPrice));
+            System.out.println("Inputted change value: " + moneyFormatter.getCurrency((float)inputChangeValue));
+            
+            totalChangeInput += inputChangeValue;
+            System.out.println("Total change inputted: " + moneyFormatter.getCurrency((float)totalChangeInput));
+            
+            subtractPriceInput = (float)totalChangeInput - itemPrice;
+            float totalValueOwed = (subtractPriceInput > 0 ? subtractPriceInput:0);
+
+            System.out.println("Total change owed: " + moneyFormatter.getCurrency(totalValueOwed));
+            
         }
     }
     

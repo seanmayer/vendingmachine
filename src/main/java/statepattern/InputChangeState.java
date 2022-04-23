@@ -25,12 +25,12 @@ public class InputChangeState implements VendingMachineState {
         this.optionValue = optionValue;
     }    
     
-    public int getInputValue() {
+    public double getInputValue() {
         return inputValue(Integer.parseInt(optionValue));
     }
     
-    private int inputValue(int index) {    
-        int value = 0;
+    private double inputValue(int index) {    
+        double value = 0;
         switch (index) {
             case 1 -> value = new ChangeConstants().ONE_PENNY;
             case 2 -> value = new ChangeConstants().TWO_PENCE;
@@ -55,7 +55,7 @@ public class InputChangeState implements VendingMachineState {
     @Override
     public void print() {
         System.out.println(new ChangeConstants().toString());
-        System.out.println(" Enter: 9 -> Continue");
+        System.out.println("Enter: 9 -> Continue");
         System.out.println("Enter change: (1 - 9)");
     }
     
