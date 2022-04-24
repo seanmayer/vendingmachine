@@ -9,58 +9,55 @@ package pojos;
  * @author sean
  */
 public class InventoryItem {
-    
-    private String name;
-    private float price;
-    
-    public InventoryItem() {
-    }
 
-    public InventoryItem(String name, float price) {
-        this.name = name;
-        this.price = price;
-    }
-    
-    /**
-     * Get the value of price
-     *
-     * @return the value of price
-     */
-    public float getPrice() {
-        return price;
-    }
+  private String name;
+  private float price;
 
-    /**
-     * Set the value of price
-     *
-     * @param price new value of price
-     */
-    public void setPrice(float price) {
-        this.price = price;
-    }
-    
-    /**
-     * Get the value of name
-     *
-     * @return the value of name
-     */
-    public String getName() {
-        return name;
-    }
+  public InventoryItem() {}
 
-    /**
-     * Set the value of name
-     *
-     * @param name new value of name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+  public InventoryItem(String name, float price) {
+    this.name = name;
+    this.price = price;
+  }
 
-    @Override
-    public String toString() {
-        return "InventoryItem{" + "item: " + name + ", price: £" + price + '}';
-    }
-    
+  /**
+   * Get the value of price
+   *
+   * @return the value of price
+   */
+  public float getPrice() {
+    return price;
+  }
 
+  /**
+   * Set the value of price
+   *
+   * @param price new value of price
+   */
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  /**
+   * Get the value of name
+   *
+   * @return the value of name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Set the value of name
+   *
+   * @param name new value of name
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return "InventoryItem{" + "item: " + name + ", price: £" + price + '}';
+  }
 }

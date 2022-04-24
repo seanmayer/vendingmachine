@@ -4,10 +4,8 @@
  */
 package simulator;
 
-import controllers.ChangeHandler;
 import controllers.InventoryHandler;
 import java.util.ArrayList;
-import pojos.Change;
 import pojos.InventoryItem;
 
 /**
@@ -15,30 +13,27 @@ import pojos.InventoryItem;
  * @author sean
  */
 public class SimulateInventory {
-    
-    private InventoryHandler inventoryHandler;
-    private ArrayList<InventoryItem> inventoryList;
-        
-    public SimulateInventory() {
-        inventoryHandler = new InventoryHandler();
-        inventoryList = new ArrayList<>();
-    }
-    
-    public InventoryHandler simulateInventory() {
-        inventoryList.add(new InventoryItem("Walkers Crisps",(float)1.50));
-        inventoryList.add(new InventoryItem("Walkers Crisps",(float)1.50));
-        inventoryList.add(new InventoryItem("Walkers Crisps",(float)1.50));
-        inventoryList.add(new InventoryItem("Walkers Crisps",(float)1.50));
-        inventoryList.add(new InventoryItem("Pepsi",(float)1.50));
-        inventoryList.add(new InventoryItem("Pepsi",(float)1.50));
-        inventoryList.add(new InventoryItem("Pepsi",(float)1.50));
-        inventoryList.add(new InventoryItem("Cola",(float)1.50));
-        inventoryList.add(new InventoryItem("Cola",(float)1.50));
-        inventoryList.add(new InventoryItem("Cola",(float)1.50));
-        inventoryHandler.setInventoryList(inventoryList);
-        return inventoryHandler;
-    }
 
-    
-    
+  private InventoryHandler inventoryHandler;
+  private ArrayList<InventoryItem> inventoryList;
+
+  public SimulateInventory() {
+    inventoryHandler = new InventoryHandler();
+    inventoryList = new ArrayList<>();
+  }
+
+  public InventoryHandler simulateInventory() {
+    inventoryList.add(new InventoryItem("Fanta", (float) 1.50));
+    inventoryList.add(new InventoryItem("Fanta", (float) 1.50));
+    inventoryList.add(new InventoryItem("Fanta", (float) 1.50));
+    inventoryList.add(new InventoryItem("Fanta", (float) 1.50));
+    inventoryList.add(new InventoryItem("Pepsi", (float) 1.50));
+    inventoryList.add(new InventoryItem("Pepsi", (float) 1.50));
+    inventoryList.add(new InventoryItem("Pepsi", (float) 1.50));
+    inventoryList.add(new InventoryItem("Cola", (float) 1.50));
+    inventoryList.add(new InventoryItem("Cola", (float) 1.50));
+    inventoryList.add(new InventoryItem("Cola", (float) 1.50));
+    inventoryHandler.setInventoryList(inventoryList);
+    return inventoryHandler;
+  }
 }

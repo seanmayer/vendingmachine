@@ -5,22 +5,20 @@
 
 package com.seanmayer.o.vendingmachine;
 
-import controllers.ChangeHandler;
-import simulator.SimulateChange;
 import views.ConsoleView;
+
 /**
  *
  * @author sean
- * 
- * Amount of inventory 
- * Amount of currency deposited 
+ *
+ * Amount of inventory
+ * Amount of currency deposited
  * Create change
  * Item selected
  */
 public class OVendingMachine {
-    
-    public static void main(String[] args) {
-        new ConsoleView().runApp();
-       
-    }
+
+  public static void main(String[] args) {
+    new ConsoleView().runApp();
+  }
 }

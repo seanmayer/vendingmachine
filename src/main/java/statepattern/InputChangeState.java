@@ -54,6 +54,7 @@ public class InputChangeState implements VendingMachineState {
 
     @Override
     public void print() {
+        System.out.println("==== Insert Change ====");
         System.out.println(new ChangeConstants().toString());
         System.out.println("Enter: 9 -> Continue");
         System.out.println("Enter change: (1 - 9)");

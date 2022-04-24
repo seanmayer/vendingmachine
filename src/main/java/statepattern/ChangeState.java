@@ -12,24 +12,25 @@ import pojos.Change;
  * @author sean
  */
 public class ChangeState implements VendingMachineState {
-    
-    private ChangeHandler changeHandler;
 
-    public ChangeState(ChangeHandler changeHandler) {
-        this.changeHandler = changeHandler;
-    }   
+  private ChangeHandler changeHandler;
 
-    @Override
-    public void doAction(VendingMachineContext context) {
-        print();
-        for (Change c : changeHandler.getVendingMachineCoinList()){
-            System.out.println(c.toString());
-        }
+  public ChangeState(ChangeHandler changeHandler) {
+    this.changeHandler = changeHandler;
+  }
+
+  @Override
+  public void doAction(VendingMachineContext context) {
+    print();
+    System.out.println("===========================");
+    for (Change c : changeHandler.getVendingMachineCoinList()) {
+      System.out.println(c.toString());
     }
+    System.out.println("===========================");
+  }
 
-    @Override
-    public void print() {
-        System.out.println("Vending Machine Change: ");
-    }
-    
+  @Override
+  public void print() {
+    System.out.println("== Vending Machine Change =");
+  }
 }

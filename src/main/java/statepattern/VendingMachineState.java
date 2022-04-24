@@ -9,6 +9,7 @@ package statepattern;
  * @author sean
  */
 public interface VendingMachineState {
-    public void doAction(VendingMachineContext context);
-    public void print();
+  public void doAction(VendingMachineContext context);
+
+  public void print();
 }
